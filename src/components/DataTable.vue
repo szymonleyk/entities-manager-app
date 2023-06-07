@@ -27,6 +27,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
 
   data() {
@@ -49,9 +50,14 @@ export default {
 
   methods: {
     editItem(id) {
-      this.editedIndex = this.desserts.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
+      axios.get(`http://localhost:3333/api/v1/customers/${id}`)
+        .then(response => {
+          console.log("I'm here")
+          const customerData = response.data;
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
     },
 
     deleteItem(id) {
