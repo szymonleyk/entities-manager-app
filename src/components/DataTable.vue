@@ -55,7 +55,6 @@ export default {
     },
 
     deleteItem(id) {
-      console.log(id)
       axios.delete(`http://localhost:3333/api/v1/customers/${id}`)
         .then((response) => {
           console.log(`Customer with ID ${id} deleted successfully`);
